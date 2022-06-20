@@ -219,8 +219,8 @@ class Movenet(object):
            keypoints, target_keypoints, center_y, center_x)
 
       crop_length_half = np.amax([
-          max_torso_xrange * Movenet._TORSO_EXPANSION_RATIO,
-          max_torso_yrange * Movenet._TORSO_EXPANSION_RATIO,
+          image_height,
+          image_width,
           max_body_yrange * Movenet._BODY_EXPANSION_RATIO,
           max_body_xrange * Movenet._BODY_EXPANSION_RATIO
       ])
