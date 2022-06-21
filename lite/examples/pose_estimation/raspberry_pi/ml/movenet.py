@@ -165,7 +165,7 @@ class Movenet(object):
 
     max_body_yrange = 0.0
     max_body_xrange = 0.0
-    for idx in range(len(BodyPart)):
+    for idx in range(13):
       if keypoints[BodyPart(idx).value, 2] < Movenet._MIN_CROP_KEYPOINT_SCORE:
         continue
       dist_y = abs(center_y - target_keypoints[joint][0])
