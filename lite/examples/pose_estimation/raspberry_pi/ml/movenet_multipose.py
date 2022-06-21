@@ -154,7 +154,7 @@ class MoveNetMultiPose(object):
     list_persons = []
     for idx in range(num_instances):
       # Skip a detected pose if its confidence score is below the threshold
-      person_score = keypoints_with_scores[0, idx, 55]
+      person_score = keypoints_with_scores[0, idx, 44]
       if person_score < detection_threshold:
         continue
 
