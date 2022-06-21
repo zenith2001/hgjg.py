@@ -159,9 +159,9 @@ class MoveNetMultiPose(object):
         continue
 
       # Extract the keypoint coordinates and scores
-      kpts_y = keypoints_with_scores[0, idx, range(0, 51, 3)]
-      kpts_x = keypoints_with_scores[0, idx, range(1, 51, 3)]
-      scores = keypoints_with_scores[0, idx, range(2, 51, 3)]
+      kpts_y = keypoints_with_scores[0, idx, range(0, 39, 3)]
+      kpts_x = keypoints_with_scores[0, idx, range(1, 39, 3)]
+      scores = keypoints_with_scores[0, idx, range(2, 39, 3)]
 
       # Create the list of keypoints
       keypoints = []
@@ -175,8 +175,8 @@ class MoveNetMultiPose(object):
 
       # Calculate the bounding box
       rect = [
-          keypoints_with_scores[0, idx, 51], keypoints_with_scores[0, idx, 52],
-          keypoints_with_scores[0, idx, 53], keypoints_with_scores[0, idx, 54]
+          keypoints_with_scores[0, idx, 39], keypoints_with_scores[0, idx, 40],
+          keypoints_with_scores[0, idx, 41], keypoints_with_scores[0, idx, 42]
       ]
       bounding_box = Rectangle(
           Point(int(rect[1] * image_width), int(rect[0] * image_height)),
