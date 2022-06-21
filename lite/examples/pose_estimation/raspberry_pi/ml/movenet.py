@@ -202,7 +202,7 @@ class Movenet(object):
     """
     # Convert keypoint index to human-readable names.
     target_keypoints = {}
-    for idx in range(len(BodyPart)):
+    for idx in range(13):
       target_keypoints[BodyPart(idx)] = [
           keypoints[idx, 0] * image_height, keypoints[idx, 1] * image_width
       ]
