@@ -34,10 +34,7 @@ class BodyPart(enum.Enum):
   RIGHT_WRIST = 10
   LEFT_HIP = 11
   RIGHT_HIP = 12
-  LEFT_KNEE = 13
-  RIGHT_KNEE = 14
-  LEFT_ANKLE = 15
-  RIGHT_ANKLE = 16
+
 
 
 class Point(NamedTuple):
