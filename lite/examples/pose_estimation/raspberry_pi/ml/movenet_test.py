@@ -43,9 +43,9 @@ class MovenetTest(unittest.TestCase):
     # Get pose landmarks truth
     pose_landmarks_truth = pd.read_csv(_GROUND_TRUTH_CSV)
     self.keypoints_truth_1 = pose_landmarks_truth.iloc[0].to_numpy().reshape(
-        (17, 2))
+        (13, 2))
     self.keypoints_truth_2 = pose_landmarks_truth.iloc[1].to_numpy().reshape(
-        (17, 2))
+        (13, 2))
 
   def _detect_and_assert(self, detector: Movenet, image: np.ndarray,
                          keypoints_truth: np.ndarray) -> None:
