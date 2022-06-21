@@ -41,7 +41,7 @@ _MOVENET_THUNDER = Movenet(_MODEL_THUNDER)
 # Load pose landmarks truth
 _POSE_LANDMARKS_TRUTH = pd.read_csv(_GROUND_TRUTH_CSV)
 _KEYPOINTS_TRUTH_LIST = [
-    row.to_numpy().reshape((17, 2)) for row in _POSE_LANDMARKS_TRUTH.iloc
+    row.to_numpy().reshape((13, 2)) for row in _POSE_LANDMARKS_TRUTH.iloc
 ]
 
 
