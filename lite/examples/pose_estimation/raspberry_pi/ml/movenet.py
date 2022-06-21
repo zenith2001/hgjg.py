@@ -311,7 +311,7 @@ class Movenet(object):
     keypoints_with_scores = np.squeeze(keypoints_with_scores)
 
     # Update the coordinates.
-    for idx in range(len(BodyPart)):
+    for idx in range(13):
       keypoints_with_scores[idx, 0] = crop_region[
           'y_min'] + crop_region['height'] * keypoints_with_scores[idx, 0]
       keypoints_with_scores[idx, 1] = crop_region[
