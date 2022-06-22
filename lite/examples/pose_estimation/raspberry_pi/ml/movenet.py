@@ -155,6 +155,7 @@ class Movenet(object):
     ]
     max_torso_yrange = 0.0
     max_torso_xrange = 0.0
+    print("J")
     for joint in torso_joints:
       dist_y = abs(center_y - target_keypoints[joint][0])
       dist_x = abs(center_x - target_keypoints[joint][1])
@@ -165,6 +166,7 @@ class Movenet(object):
 
     max_body_yrange = 0.0
     max_body_xrange = 0.0
+    print("E")
     for idx in range(len(BodyPart)):
       if keypoints[BodyPart(idx).value, 2] < Movenet._MIN_CROP_KEYPOINT_SCORE:
         continue
@@ -176,6 +178,7 @@ class Movenet(object):
       if dist_x > max_body_xrange:
         max_body_xrange = dist_x
 
+    print("N")
     return [
         max_torso_yrange, max_torso_xrange, max_body_yrange, max_body_xrange
     ]
@@ -202,12 +205,14 @@ class Movenet(object):
     """
     # Convert keypoint index to human-readable names.
     target_keypoints = {}
+    print("I")
     for idx in range(len(BodyPart)):
       target_keypoints[BodyPart(idx)] = [
           keypoints[idx, 0] * image_height, keypoints[idx, 1] * image_width
       ]
 
     # Calculate crop region if the torso is visible.
+    print("T")
     if self._torso_visible(keypoints):
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
@@ -311,12 +316,14 @@ class Movenet(object):
     keypoints_with_scores = np.squeeze(keypoints_with_scores)
 
     # Update the coordinates.
+    print("H")
     for idx in range(len(BodyPart)):
       keypoints_with_scores[idx, 0] = crop_region[
           'y_min'] + crop_region['height'] * keypoints_with_scores[idx, 0]
       keypoints_with_scores[idx, 1] = crop_region[
           'x_min'] + crop_region['width'] * keypoints_with_scores[idx, 1]
 
+    print("X")
     return keypoints_with_scores
 
   def detect(self,
