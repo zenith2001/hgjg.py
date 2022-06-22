@@ -165,7 +165,7 @@ class Movenet(object):
 
     max_body_yrange = 0.0
     max_body_xrange = 0.0
-    for idx in range(13):
+    for idx in range(len(BodyPart)):
       if keypoints[BodyPart(idx).value, 2] < Movenet._MIN_CROP_KEYPOINT_SCORE:
         continue
       dist_y = abs(center_y - target_keypoints[joint][0])
@@ -202,7 +202,7 @@ class Movenet(object):
     """
     # Convert keypoint index to human-readable names.
     target_keypoints = {}
-    for idx in range(13):
+    for idx in range(len(BodyPart)):
       target_keypoints[BodyPart(idx)] = [
           keypoints[idx, 0] * image_height, keypoints[idx, 1] * image_width
       ]
@@ -311,7 +311,7 @@ class Movenet(object):
     keypoints_with_scores = np.squeeze(keypoints_with_scores)
 
     # Update the coordinates.
-    for idx in range(13):
+    for idx in range(len(BodyPart)):
       keypoints_with_scores[idx, 0] = crop_region[
           'y_min'] + crop_region['height'] * keypoints_with_scores[idx, 0]
       keypoints_with_scores[idx, 1] = crop_region[
