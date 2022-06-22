@@ -90,7 +90,7 @@ def person_from_keypoints_with_scores(
   # Convert keypoints to the input image coordinate system.
   keypoints = []
   print("J7")
-  for i in range(scores.shape[0]):
+  for i in range(len(BodyPart)):
     keypoints.append(
         KeyPoint(
             BodyPart(i),
