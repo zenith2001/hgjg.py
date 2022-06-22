@@ -80,7 +80,7 @@ def _visualize_detection_result(input_image, ground_truth):
 
   # Create a fake score column to convert ground truth to "Person" type
   ground_truth[:, :2] = ground_truth[:, 1::-1]
-  score = np.ones((17, 1), dtype=float)
+  score = np.ones((13, 1), dtype=float)
   ground_truth = np.append(ground_truth, score, axis=1)
   person = person_from_keypoints_with_scores(ground_truth, 1, 1)
 
