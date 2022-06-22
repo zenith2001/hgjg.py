@@ -58,7 +58,7 @@ class MovenetTest(unittest.TestCase):
     """
     person = detector.detect(image, reset_crop_region=True)
     keypoints = person.keypoints
-
+    print("J4")
     for idx in range(len(BodyPart)):
       kpt_estimate = np.array(
           [keypoints[idx].coordinate.x, keypoints[idx].coordinate.y])
@@ -70,7 +70,7 @@ class MovenetTest(unittest.TestCase):
               BodyPart(idx).name, int(distance)))
       logging.debug('Detected %s close to expected result (%d)',
                     BodyPart(idx).name, int(distance))
-
+    print("E4")
   def test_pose_estimation_image1_lightning(self):
     """Test if MoveNet Lightning detection's close to ground truth of image1."""
     self._detect_and_assert(self.movenet_lightning, self.image_1,
