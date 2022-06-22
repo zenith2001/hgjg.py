@@ -152,6 +152,7 @@ class MoveNetMultiPose(object):
 
     _, num_instances, _ = keypoints_with_scores.shape
     list_persons = []
+    print("J1")
     for idx in range(num_instances):
       # Skip a detected pose if its confidence score is below the threshold
       person_score = keypoints_with_scores[0, idx, 43]
@@ -165,6 +166,7 @@ class MoveNetMultiPose(object):
 
       # Create the list of keypoints
       keypoints = []
+      print("J2")
       for i in range(scores.shape[0]):
         keypoints.append(
             KeyPoint(
@@ -173,6 +175,7 @@ class MoveNetMultiPose(object):
                     int(kpts_x[i] * image_width),
                     int(kpts_y[i] * image_height)), scores[i]))
 
+      print("E2")
       # Calculate the bounding box
       rect = [
           keypoints_with_scores[0, idx, 39], keypoints_with_scores[0, idx, 40],
@@ -184,6 +187,7 @@ class MoveNetMultiPose(object):
 
       # Create a Person instance corresponding to the detected entity.
       list_persons.append(Person(keypoints, bounding_box, person_score))
+    print("E1")
     if self._tracker:
       list_persons = self._tracker.apply(list_persons, time.time() * 1000)
 
