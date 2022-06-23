@@ -57,7 +57,7 @@ class PosenetTest(unittest.TestCase):
     """
     person = detector.detect(image)
     keypoints = person.keypoints
-    print("J6")
+    
     for idx in range(len(BodyPart)):
       kpt_estimate = np.array(
           [keypoints[idx].coordinate.x, keypoints[idx].coordinate.y])
@@ -69,7 +69,7 @@ class PosenetTest(unittest.TestCase):
               BodyPart(idx).name, int(distance)))
       logging.debug('Detected %s close to expected result (%d)',
                     BodyPart(idx).name, int(distance))
-    print("E6")
+    
   def test_pose_estimation_image1(self):
     """Test if Posenet detection's close to ground truth of image1."""
     self._detect_and_assert(self.posenet, self.image_1, self.keypoints_truth_1)
