@@ -121,7 +121,7 @@ class Posenet(object):
     joint_num = heatmap_data.shape[-1]
     keypoints_with_scores = np.zeros((joint_num, 3), np.float32)
     scores = self._sigmoid(heatmap_data)
-    print("J5")
+    
     for idx in range(joint_num):
       joint_heatmap = heatmap_data[..., idx]
       x, y = np.unravel_index(
@@ -136,5 +136,5 @@ class Posenet(object):
           remap_pos[1] +
           offset_data[max_val_pos[0], max_val_pos[1], idx + joint_num]) / 257
       keypoints_with_scores[idx, 2] = scores[x, y, idx]
-    print("E5")
+    
     return keypoints_with_scores
