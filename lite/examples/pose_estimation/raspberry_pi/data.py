@@ -89,7 +89,7 @@ def person_from_keypoints_with_scores(
 
   # Convert keypoints to the input image coordinate system.
   keypoints = []
-  print("J7")
+  
   for i in range(len(BodyPart)):
     keypoints.append(
         KeyPoint(
@@ -97,7 +97,7 @@ def person_from_keypoints_with_scores(
             Point(int(kpts_x[i] * image_width), int(kpts_y[i] * image_height)),
             scores[i]))
 
-  print("E7")
+  
   # Calculate bounding box as SinglePose models don't return bounding box.
   start_point = Point(
       int(np.amin(kpts_x) * image_width), int(np.amin(kpts_y) * image_height))
