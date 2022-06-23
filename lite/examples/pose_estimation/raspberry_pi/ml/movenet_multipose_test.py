@@ -57,11 +57,11 @@ class MovenetMultiPoseTest(unittest.TestCase):
 
     # Shift keypoints_truth_2 to the right to account for the space occupied by
     # image1.
-    print("J3")
+    
     for idx in range(keypoints_truth_2.shape[0]):
       keypoints_truth_2[idx][0] += image_1.shape[1]
 
-    print("E3")
+    
     self.keypoints_truth = [keypoints_truth_1, keypoints_truth_2]
 
   def _assert(self, keypoints: List[KeyPoint],
@@ -72,7 +72,7 @@ class MovenetMultiPoseTest(unittest.TestCase):
       keypoints: List Keypoint detected by from the Movenet Multipose model.
       keypoints_truth: Ground truth keypoints.
     """
-    print("N3")
+    
     for idx in range(len(BodyPart)):
       kpt_estimate = np.array(
           [keypoints[idx].coordinate.x, keypoints[idx].coordinate.y])
@@ -85,7 +85,7 @@ class MovenetMultiPoseTest(unittest.TestCase):
               BodyPart(idx).name, int(distance)))
       logging.debug('Detected %s close to expected result (%d)',
                     BodyPart(idx).name, int(distance))
-    print("I3")
+    
   def test_pose_estimation_image1_multipose(self):
     """Test if MoveNet Multipose's detection is close to ground truth of image1."""
     keypoints = self.list_persons[0].keypoints
