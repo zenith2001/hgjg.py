@@ -280,7 +280,7 @@ class Movenet(object):
     padding_right = int((x_max - 1) * image.shape[1] if x_max >= 1 else 0)
 
     # Crop and resize image
-    output_image = image[crop_top:crop_bottom, crop_left:crop_right]
+    output_image = image[:,:]
     output_image = cv2.copyMakeBorder(output_image, padding_top, padding_bottom,
                                       padding_left, padding_right,
                                       cv2.BORDER_CONSTANT)
