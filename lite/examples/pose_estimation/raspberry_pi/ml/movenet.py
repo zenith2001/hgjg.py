@@ -274,6 +274,12 @@ class Movenet(object):
     crop_bottom = int(image.shape[0] if y_max >= 1 else y_max * image.shape[0])
     crop_left = int(0 if x_min < 0 else x_min * image.shape[1])
     crop_right = int(image.shape[1] if x_max >= 1 else x_max * image.shape[1])
+    
+    print(crop_top)
+    print(crop_bottom)
+    print(crop_left)
+    print(crop_right)
+    image.shape
 
     padding_top = int(0 - y_min * image.shape[0] if y_min < 0 else 0)
     padding_bottom = int((y_max - 1) * image.shape[0] if y_max >= 1 else 0)
