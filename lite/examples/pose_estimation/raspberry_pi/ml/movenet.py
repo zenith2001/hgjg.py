@@ -280,7 +280,9 @@ class Movenet(object):
     padding_right = int((x_max - 1) * image.shape[1] if x_max >= 1 else 0)
 
     # Crop and resize image
-    output_image = image[:,:]
+    output_image = image[crop_top:crop_bottom, crop_left:crop_right]
+    print(output_image)
+    print("JEN")
     output_image = cv2.copyMakeBorder(output_image, padding_top, padding_bottom,
                                       padding_left, padding_right,
                                       cv2.BORDER_CONSTANT)
@@ -346,6 +348,7 @@ class Movenet(object):
       scores.
     """
     image_height, image_width, _ = input_image.shape
+    print(input_image.shape)
     if (self._crop_region is None) or reset_crop_region:
       # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
