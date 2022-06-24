@@ -213,8 +213,7 @@ class Movenet(object):
 
     # Calculate crop region if the torso is visible.
    
-    if False:
-      print("J")
+    if self._torso_visible(keypoints):      
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
       center_x = (target_keypoints[BodyPart.LEFT_HIP][1] +
@@ -258,7 +257,6 @@ class Movenet(object):
       }
     # Return the initial crop regsion if the torso isn't visible.
     else:
-      print("E")
       return self.init_crop_region(image_height, image_width)
 
   def _crop_and_resize(
@@ -275,11 +273,6 @@ class Movenet(object):
     crop_left = int(0 if x_min < 0 else x_min * image.shape[1])
     crop_right = int(image.shape[1] if x_max >= 1 else x_max * image.shape[1])
     
-    print(crop_top)
-    print(crop_bottom)
-    print(crop_left)
-    print(crop_right)
-    print(image.shape)
 
     padding_top = int(0 - y_min * image.shape[0] if y_min < 0 else 0)
     padding_bottom = int((y_max - 1) * image.shape[0] if y_max >= 1 else 0)
