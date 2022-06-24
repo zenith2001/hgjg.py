@@ -213,7 +213,7 @@ class Movenet(object):
 
     # Calculate crop region if the torso is visible.
    
-    if self._torso_visible(keypoints):
+    if False:
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
       center_x = (target_keypoints[BodyPart.LEFT_HIP][1] +
