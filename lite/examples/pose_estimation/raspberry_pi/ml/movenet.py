@@ -213,7 +213,7 @@ class Movenet(object):
 
     # Calculate crop region if the torso is visible.
    
-    if self._torso_visible(keypoints):      
+    if False:      
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
       center_x = (target_keypoints[BodyPart.LEFT_HIP][1] +
@@ -350,9 +350,9 @@ class Movenet(object):
     """
     image_height, image_width, _ = input_image.shape
     print(input_image.shape)
-    if (self._crop_region is None) or reset_crop_region:
-      # Set crop region for the first frame.
-      self._crop_region = self.init_crop_region(image_height, image_width)
+    #if (self._crop_region is None) or reset_crop_region:
+    # Set crop region for the first frame.
+    self._crop_region = self.init_crop_region(image_height, image_width)
 
     # Detect pose using the crop region inferred from the detection result in
     # the previous frame
