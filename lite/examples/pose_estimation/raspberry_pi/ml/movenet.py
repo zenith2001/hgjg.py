@@ -360,7 +360,7 @@ class Movenet(object):
         crop_size=(self._input_height, self._input_width))
     # Calculate the crop region for the next frame
     #self._crop_region = self._determine_crop_region(keypoint_with_scores,
-                                                    image_height, image_width)
+     #                                               image_height, image_width)
 
     # Convert the keypoints with scores to a Person data type
 
