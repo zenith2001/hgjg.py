@@ -213,7 +213,7 @@ class Movenet(object):
 
     # Calculate crop region if the torso is visible.
    
-    if self._torso_visible(keypoints):      
+    if False:      
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
       center_x = (target_keypoints[BodyPart.LEFT_HIP][1] +
@@ -237,7 +237,7 @@ class Movenet(object):
           [crop_length_half, np.amax(distances_to_border)])
 
       # If the body is large enough, there's no need to apply cropping logic.
-      if crop_length_half > max(image_width, image_height) / 2:
+      if True:
         return self.init_crop_region(image_height, image_width)
       # Calculate the crop region that nicely covers the full body.
       else:
@@ -348,7 +348,7 @@ class Movenet(object):
     """
     image_height, image_width, _ = input_image.shape
     
-    if (self._crop_region is None) or reset_crop_region:
+    if True:
       # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
 
@@ -359,7 +359,7 @@ class Movenet(object):
         self._crop_region,
         crop_size=(self._input_height, self._input_width))
     # Calculate the crop region for the next frame
-    self._crop_region = self._determine_crop_region(keypoint_with_scores,
+    #self._crop_region = self._determine_crop_region(keypoint_with_scores,
                                                     image_height, image_width)
 
     # Convert the keypoints with scores to a Person data type
