@@ -282,10 +282,10 @@ class Movenet(object):
     # Crop and resize image
     output_image = image[:,:]
     
-    output_image = cv2.copyMakeBorder(output_image, padding_top, padding_bottom,
-                                      padding_left, padding_right,
+    output_image = cv2.copyMakeBorder(output_image, 3, 3,
+                                      3, 3,
                                       cv2.BORDER_CONSTANT)
-    output_image = cv2.resize(output_image, (crop_size[0], crop_size[1]))
+    output_image = cv2.resize(output_image, (image.shape[0], image.shape[1]))
 
     return output_image
 
