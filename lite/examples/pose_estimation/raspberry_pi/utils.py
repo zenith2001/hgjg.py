@@ -155,8 +155,8 @@ def keep_aspect_ratio_resizer(
     target_height = int(math.ceil(scaled_height / 32) * 32)
 
   padding_top, padding_left = 0, 0
-  padding_bottom = target_height 
-  padding_right = target_width 
+  padding_bottom = target_height - image.shape[0]
+  padding_right = target_width - image.shape[1]
   # add padding to image
   image = cv2.copyMakeBorder(image, padding_top, padding_bottom, padding_left,
                              padding_right, cv2.BORDER_CONSTANT)
