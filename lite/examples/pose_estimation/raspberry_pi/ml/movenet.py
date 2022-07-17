@@ -213,7 +213,7 @@ class Movenet(object):
 
     # Calculate crop region if the torso is visible.
    
-    if False:      
+    if self._torso_visible(keypoints):      
       center_y = (target_keypoints[BodyPart.LEFT_HIP][0] +
                   target_keypoints[BodyPart.RIGHT_HIP][0]) / 2
       center_x = (target_keypoints[BodyPart.LEFT_HIP][1] +
@@ -237,7 +237,7 @@ class Movenet(object):
           [crop_length_half, np.amax(distances_to_border)])
 
       # If the body is large enough, there's no need to apply cropping logic.
-      if True:
+      if self._torso_visible(keypoints):
         return self.init_crop_region(image_height, image_width)
       # Calculate the crop region that nicely covers the full body.
       else:
@@ -282,8 +282,8 @@ class Movenet(object):
     # Crop and resize image
     output_image = image[:,:]
     
-    output_image = cv2.copyMakeBorder(output_image, 3, 3,
-                                      3, 3,
+    output_image = cv2.copyMakeBorder(output_image, padding_top, padding_bottom,
+                                      padding_left, padding_right,
                                       cv2.BORDER_CONSTANT)
     output_image = cv2.resize(output_image, (crop_size[0],crop_size[1]))
 
@@ -348,7 +348,7 @@ class Movenet(object):
     """
     image_height, image_width, _ = input_image.shape
     
-    if True:
+    if (self._crop_region is None) or reset_crop_region:
       # Set crop region for the first frame.
       self._crop_region = self.init_crop_region(image_height, image_width)
 
@@ -359,8 +359,8 @@ class Movenet(object):
         self._crop_region,
         crop_size=(self._input_height, self._input_width))
     # Calculate the crop region for the next frame
-    #self._crop_region = self._determine_crop_region(keypoint_with_scores,
-     #                                               image_height, image_width)
+    self._crop_region = self._determine_crop_region(keypoint_with_scores,
+                                                    image_height, image_width)
 
     # Convert the keypoints with scores to a Person data type
 
